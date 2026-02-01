@@ -1,24 +1,29 @@
-// Import necessary hooks and functions from React.
-import { useContext, useReducer, createContext } from "react";
-import storeReducer, { initialStore } from "../store"  // Import the reducer and the initial state.
+import React, { createContext, useContext, useEffect, useMemo, useState } from "react";
+import { actions, initialStore } from "../store";
 
-// Create a context to hold the global state of the application
-// We will call this global state the "store" to avoid confusion while using local states
-const StoreContext = createContext()
+const StoreContext = createContext(null);
 
-// Define a provider component that encapsulates the store and warps it in a context provider to 
-// broadcast the information throught all the app pages and components.
-export function StoreProvider({ children }) {
-    // Initialize reducer with the initial state.
-    const [store, dispatch] = useReducer(storeReducer, initialStore())
-    // Provide the store and dispatch method to all child components.
-    return <StoreContext.Provider value={{ store, dispatch }}>
-        {children}
-    </StoreContext.Provider>
-}
+export const StoreProvider = ({ children }) => {
+  const [store, setStore] = useState(initialStore());
 
-// Custom hook to access the global state and dispatch function.
-export default function useGlobalReducer() {
-    const { dispatch, store } = useContext(StoreContext)
-    return { dispatch, store };
-}
+  const getStore = () => store;
+
+  const value = useMemo(() => {
+    const boundActions = actions(getStore, setStore);
+    return { store, actions: boundActions };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [store]);
+
+  // Persist once on mount if needed (initialStore already loads)
+  useEffect(() => {
+    // no-op; keeping hook in case you want to expand
+  }, []);
+
+  return <StoreContext.Provider value={value}>{children}</StoreContext.Provider>;
+};
+
+export const useGlobalReducer = () => {
+  const ctx = useContext(StoreContext);
+  if (!ctx) throw new Error("useGlobalReducer must be used inside StoreProvider");
+  return ctx;
+};

@@ -1,0 +1,179 @@
+
+:root {
+  --sw-yellow: #ffd54a;
+  --sw-red: #ff3b3b;
+  --sw-blue: #4da3ff;
+  --sw-card: rgba(10, 14, 24, 0.82);
+  --sw-border: rgba(255, 255, 255, 0.12);
+  --sw-text: rgba(255, 255, 255, 0.92);
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  color: var(--sw-text);
+  background: radial-gradient(circle at 20% 10%, #1d2a5a 0%, #060914 45%, #02030a 100%);
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(1px 1px at 20px 30px, rgba(255,255,255,.8) 50%, transparent 51%),
+    radial-gradient(1px 1px at 120px 80px, rgba(255,255,255,.6) 50%, transparent 51%),
+    radial-gradient(1px 1px at 220px 160px, rgba(255,255,255,.7) 50%, transparent 51%),
+    radial-gradient(1px 1px at 320px 220px, rgba(255,255,255,.5) 50%, transparent 51%),
+    radial-gradient(1px 1px at 420px 140px, rgba(255,255,255,.6) 50%, transparent 51%),
+    radial-gradient(1px 1px at 520px 300px, rgba(255,255,255,.7) 50%, transparent 51%),
+    radial-gradient(1px 1px at 620px 120px, rgba(255,255,255,.6) 50%, transparent 51%),
+    radial-gradient(1px 1px at 720px 260px, rgba(255,255,255,.7) 50%, transparent 51%);
+  opacity: 0.35;
+  filter: blur(0.2px);
+}
+
+/* Navbar */
+.sw-navbar {
+  background: rgb(0, 0, 0);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+}
+
+
+.sw-logo {
+  height: 30px;
+  width: auto;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.6));
+}
+
+.sw-title {
+  color: var(--sw-red);
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+.sw-row::-webkit-scrollbar {
+  height: 10px;
+}
+.sw-row::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+}
+.sw-row::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 999px;
+}
+
+/* Cards */
+.sw-card {
+  min-width: 260px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--sw-card);
+  border: 1px solid var(--sw-border);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.sw-card .card-body {
+  color: var(--sw-text);
+}
+
+.sw-card-text {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.9rem;
+}
+
+
+.sw-card-imgbox {
+  height: 160px;
+  width: 100%;
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.10), rgba(255,255,255,.02));
+  border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+}
+
+.sw-card-img {
+  height: 160px;
+  width: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Dropdown */
+.sw-dropdown {
+  background: rgba(10, 14, 24, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.sw-dropdown .dropdown-item,
+.sw-dropdown-link {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.sw-dropdown-link:hover {
+  color: var(--sw-yellow) !important;
+}
+/* Details page */
+.sw-detail-imgbox {
+  height: 320px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: rgba(10, 14, 24, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.sw-detail-img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  display: block;
+}
+
+.sw-detail-title {
+  font-weight: 800;
+  letter-spacing: 0.4px;
+}
+
+.sw-detail-subtitle {
+  color: rgba(255, 255, 255, 0.75); /* make “A planet…” readable */
+  margin-bottom: 0;
+}
+
+.sw-demo-text {
+  background: rgba(10, 14, 24, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  padding: 14px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.sw-hr {
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.sw-detail-card {
+  background: rgba(10, 14, 24, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.sw-detail-key {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: rgba(255, 255, 255, 0.55);
+  margin-bottom: 4px;
+}
+
+.sw-detail-val {
+  font-weight: 650;
+  color: rgba(255, 255, 255, 0.92);
+  word-break: break-word;
+}
